@@ -6,45 +6,27 @@
     <title>CrimsonStudios Plugin Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #121212;
-            color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
         }
-        h1 {
-            font-size: 3rem;
-            color: #ff5c57;
-            margin-bottom: 20px;
+        h1, h2, h3 {
+            color: #ff5733;
         }
-        h2, h3 {
-            margin: 10px 0;
-        }
-        select, input, button {
-            background-color: #333;
-            border: 1px solid #555;
-            color: #f0f0f0;
-            font-size: 1rem;
+        input, select, button {
+            margin: 10px;
             padding: 10px;
-            width: 300px;
-            margin-bottom: 15px;
-            border-radius: 5px;
+            border: 1px solid #ff5733;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
         }
         button {
-            background-color: #ff5c57;
-            border: none;
+            background-color: #ff5733;
             cursor: pointer;
         }
         button:hover {
-            background-color: #e55a4b;
-        }
-        input[type="date"] {
-            background-color: #333;
+            background-color: #e04a26;
         }
     </style>
 </head>
@@ -55,21 +37,13 @@
     <select id="pluginSelect">
         <option value="HallStair">Hall Stair - Anti-Lag Plugin</option>
         <option value="EasyTeleport">EasyTeleport - Fast Warp Plugin</option>
-        <option value="TeleportationSystem">TeleportationSystem - Advanced Teleport Plugin</option>
-        <option value="NightVisionSystem">NightVisionSystem - Custom NightVision</option>
-        <option value="WorldGuardPlus">WorldGuardPlus - World Protection Plugin</option>
-        <option value="AutoBackup">AutoBackup - Automatic Server Backup Plugin</option>
-        <option value="ClearLag">ClearLag - Server Lag Cleaner</option>
-        <option value="ItemShop">ItemShop - Virtual Item Shop Plugin</option>
-        <option value="PvPSystem">PvPSystem - Advanced PvP Mechanics</option>
-        <option value="CustomSpawn">CustomSpawn - Custom Spawn System</option>
     </select>
 
     <h3>Enter License Key:</h3>
-    <input type="text" id="licenseKey" placeholder="Enter your license key">
+    <input type="text" id="licenseKey" placeholder="Enter your license key" required>
 
     <h3>Enter Server IP:</h3>
-    <input type="text" id="serverIP" placeholder="Enter the server IP">
+    <input type="text" id="serverIP" placeholder="Enter the server IP" required>
 
     <h3>Expiration Date (0 for Infinite):</h3>
     <input type="date" id="expirationDate">
@@ -81,7 +55,7 @@
             const pluginName = document.getElementById('pluginSelect').value;
             const licenseKey = document.getElementById('licenseKey').value;
             const serverIP = document.getElementById('serverIP').value;
-            const expirationDate = document.getElementById('expirationDate').value;
+            const expirationDate = document.getElementById('expirationDate').value || '0';
 
             const data = {
                 pluginName,
