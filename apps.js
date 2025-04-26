@@ -1,29 +1,24 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
+// Simulating plugin generation
 app.post('/generate-plugin', (req, res) => {
     const { pluginName, licenseKey, serverIP, expirationDate } = req.body;
 
-    if (!pluginName || !licenseKey || !serverIP) {
-        return res.status(400).send("Missing required data");
+    if (!pluginName || !licenseKey || !serverIP || !expirationDate) {
+        return res.status(400).json({ message: 'Missing required fields.' });
     }
 
-    const generatedPlugin = `${pluginName}-${licenseKey}.jar`;
-
-    res.json({
-        message: "Plugin generated successfully!",
-        downloadLink: `/download/${generatedPlugin}`
-    });
+    // Here, you would implement the logic to create the plugin based on the data.
+    // For now, we'll send a success message.
+    
+    res.status(200).json({ message: `Plugin ${pluginName} generated successfully!` });
 });
 
-app.get('/download/:filename', (req, res) => {
-    const filename = req.params.filename;
-    res.send(`You can download the plugin: ${filename}`);
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
-
-// Export the express app as a Vercel handler
-module.exports = app;
