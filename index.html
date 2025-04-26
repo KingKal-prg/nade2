@@ -70,7 +70,13 @@
                 body: JSON.stringify(data)
             })
             .then(response => response.json())
-            .then(data => alert(data.message))
+            .then(data => {
+                alert(data.message);
+                if (data.downloadUrl) {
+                    // Trigger file download
+                    window.location.href = data.downloadUrl;
+                }
+            })
             .catch(error => alert('Error: ' + error));
         }
     </script>
