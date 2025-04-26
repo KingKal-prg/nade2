@@ -1,15 +1,18 @@
 {
   "name": "plugin-generator",
   "version": "1.0.0",
-  "description": "A plugin generator for custom Minecraft plugins.",
-  "main": "app.js",
+  "description": "A simple plugin generator for CrimsonStudios.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node apps.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
-  "scripts": {
-    "start": "node app.js"
-  },
+  "devDependencies": {},
   "engines": {
-    "node": "14.x"
-  }
+    "node": "16.x"
+  },
+  "author": "",
+  "license": "ISC"
 }
